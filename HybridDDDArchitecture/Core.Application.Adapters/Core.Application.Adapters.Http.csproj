@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Include="C:\Users\homep\repos\HybridArchitecture.NET\HybridDDDArchitecture\Core.Application.Adapters.Http\IExternalApiClient.cs" Link="IExternalApiClient.cs" />
+    <Compile Include="C:\Users\jodan\Documents\GitHub\P_arcial_2\P_arcial_2\HybridDDDArchitecture\Core.Application.Adapters.Http\IExternalApiClient.cs" Link="IExternalApiClient.cs" />
   </ItemGroup>
 
 </Project>
