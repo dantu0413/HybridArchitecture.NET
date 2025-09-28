@@ -2,5 +2,5 @@
 
 namespace Application.UseCases.Automoviles.Commands
 {
-    public record CreateAutomovilCommand(AutomovilCreateDto Dto);
+    public record UpdateAutomovilCommand(int Id, AutomovilUpdateDto Dto);
 }
