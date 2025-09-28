@@ -1,7 +1,4 @@
 ﻿using Application.Repositories;
-// Si usás el adapter HTTP del template:
-using Core.Application; // IExternalApiClient (interfaz)
-using Core.Infraestructure.Adapters.Http; // ExternalApiHttpAdapter (impl)
 using Infrastructure.Factories;
 using Infrastructure.Repositories.Sql;
 using Microsoft.EntityFrameworkCore;
@@ -14,24 +11,20 @@ namespace Infrastructure.Registrations
     /// Registro de servicios de Infraestructura:
     /// - DbContext (SQL Server)
     /// - Repositorios EF Core
-    /// - Adapters (HTTP, etc.)
     /// </summary>
     public static class InfraestructureServicesRegistration
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            // 1) DbContext: SQL Server Local
-            // Asegurate de tener ConnectionStrings:AutomovilDb en appsettings.json
+            // Usa tu connection string "SqlConnection" desde appsettings
             services.AddDbContext<AutomovilDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("AutomovilDb")));
+                options.UseSqlServer(configuration.GetConnectionString("SqlConnection")));
 
-            // 2) Repositorios (EF)
+            // Repositorio EF de Automóvil
             services.AddScoped<IAutomovilRepository, AutomovilRepository>();
 
-            // 3) Adapters opcionales (del template)
-            services.AddSingleton<IExternalApiClient, ExternalApiHttpAdapter>();
-
-            // (Si tenés mensajería/EventBus, registralo aquí también)
+            // No registramos adapters HTTP porque tu carpeta Adapters está vacía.
+            // Si más adelante agregas uno, lo registras acá.
 
             return services;
         }

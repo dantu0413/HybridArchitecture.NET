@@ -8,6 +8,13 @@
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="Controllers\DummyEntityController.cs" />
+  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Core.Application.Adapters.Http\Core.Application.Adapters.Http.csproj" />
+		<ProjectReference Include="..\Core.Infraestructure.Adapters.Http\Core.Infraestructure.Adapters.Http.csproj" />
+	</ItemGroup>
  
 
   <ItemGroup>

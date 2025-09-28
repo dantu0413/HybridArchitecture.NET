@@ -9,6 +9,7 @@
   <ItemGroup>
     <Compile Remove="Repositories\Mongo\DummyEntityRepository.cs" />
     <Compile Remove="Repositories\Mongo\Maps\DummyEntityMap.cs" />
+    <Compile Remove="Repositories\Mongo\StoreDbContext.cs" />
     <Compile Remove="Repositories\Sql\DummyEntityRepository.cs" />
   </ItemGroup>
 
