@@ -24,7 +24,7 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             // Controllers y Swagger (útil para probar los endpoints del parcial)
-            services.AddControllers();
+            services.AddControllers(options => {options.Filters.Add<HttpExceptionFilter>();});
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
