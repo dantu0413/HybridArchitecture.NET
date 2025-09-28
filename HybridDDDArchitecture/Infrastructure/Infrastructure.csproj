@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Repositories\Mongo\DummyEntityRepository.cs" />
+    <Compile Remove="Repositories\Mongo\Maps\DummyEntityMap.cs" />
+    <Compile Remove="Repositories\Sql\DummyEntityRepository.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Application\Application.csproj" />
     <ProjectReference Include="..\Core.Infraestructure.Adapters.Http\Core.Infraestructure.Adapters.Http.csproj" />
     <ProjectReference Include="..\Core.Infraestructure.EventBus.RabbitMq\Core.Infraestructure.EventBus.RabbitMq.csproj" />
@@ -17,6 +23,7 @@
 
   <ItemGroup>
     <Folder Include="Adapters\" />
+    <Folder Include="Repositories\Mongo\Maps\" />
   </ItemGroup>
 
   <ItemGroup>
