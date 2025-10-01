@@ -78,8 +78,20 @@
 
         void SetNumeroMotor(string v)
         {
-            if (string.IsNullOrWhiteSpace(v)) throw new ArgumentException("Numero de motor requerido", nameof(NumeroMotor));
-            NumeroMotor = v.Trim();
+                       
+                if (string.IsNullOrWhiteSpace(v))
+                    throw new ArgumentException("Numero de motor requerido", nameof(NumeroMotor));
+
+                var trimmed = v.Trim();
+
+                if (trimmed.Length != 17)
+                    throw new ArgumentException("El número de motor debe tener exactamente 17 caracteres.", nameof(NumeroMotor));
+
+                if (!trimmed.All(char.IsLetterOrDigit))
+                    throw new ArgumentException("El número de motor debe ser alfanumérico.", nameof(NumeroMotor));
+
+                NumeroMotor = trimmed;
+            
         }
 
         void SetNumeroChasis(string v)
