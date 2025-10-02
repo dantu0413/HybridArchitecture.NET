@@ -51,53 +51,6 @@
             if (fabricacion.HasValue) SetFabricacion(fabricacion.Value);
         }
 
-        void SetMarca(string v)
-        {
-            if (string.IsNullOrWhiteSpace(v)) throw new ArgumentException("Marca requerida", nameof(Marca));
-            Marca = v.Trim();
-        }
-
-        void SetModelo(string v)
-        {
-            if (string.IsNullOrWhiteSpace(v)) throw new ArgumentException("Modelo requerido", nameof(Modelo));
-            Modelo = v.Trim();
-        }
-
-        void SetColor(string v)
-        {
-            if (string.IsNullOrWhiteSpace(v)) throw new ArgumentException("Color requerido", nameof(Color));
-            Color = v.Trim();
-        }
-
-        void SetFabricacion(int y)
-        {
-            int now = DateTime.UtcNow.Year;
-            if (y < 1900 || y > now) throw new ArgumentOutOfRangeException(nameof(Fabricacion), "Año de fabricación inválido");
-            Fabricacion = y;
-        }
-
-        void SetNumeroMotor(string v)
-        {
-                       
-                if (string.IsNullOrWhiteSpace(v))
-                    throw new ArgumentException("Numero de motor requerido", nameof(NumeroMotor));
-
-                var trimmed = v.Trim();
-
-                if (trimmed.Length != 17)
-                    throw new ArgumentException("El número de motor debe tener exactamente 17 caracteres.", nameof(NumeroMotor));
-
-                if (!trimmed.All(char.IsLetterOrDigit))
-                    throw new ArgumentException("El número de motor debe ser alfanumérico.", nameof(NumeroMotor));
-
-                NumeroMotor = trimmed;
-            
-        }
-
-        void SetNumeroChasis(string v)
-        {
-            if (string.IsNullOrWhiteSpace(v)) throw new ArgumentException("Numero de chasis requerido", nameof(NumeroChasis));
-            NumeroChasis = v.Trim();
-        }
+        
     }
 }
