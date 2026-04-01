@@ -1,42 +1,30 @@
 ﻿using Application.Repositories;
-using Core.Application;
-using Core.Infraestructure;
-using Domain.Others.Utils;
-using Infrastructure.Constants;
 using Infrastructure.Factories;
+using Infrastructure.Repositories.Sql;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Identity.Client;
-using MongoDB.Bson.Serialization.Conventions;
-using static Domain.Enums.Enums;
 
 namespace Infrastructure.Registrations
 {
     /// <summary>
-    /// Aqui se deben registrar todas las dependencias de la capa de infraestructura
+    /// Registro de servicios de Infraestructura:
+    /// - DbContext (SQL Server)
+    /// - Repositorios EF Core
     /// </summary>
     public static class InfraestructureServicesRegistration
     {
         public static IServiceCollection AddInfrastructureServices(this IServiceCollection services, IConfiguration configuration)
         {
-            /* Database Context */
-            services.AddRepositories(configuration);
+            // Usa tu connection string "SqlConnection" desde appsettings
+            services.AddDbContext<AutomovilDbContext>(options =>
+                options.UseSqlServer(configuration.GetConnectionString("SqlConnection")));
 
-            /* EventBus */
-            services.AddEventBus(configuration);
+            // Repositorio EF de Automóvil
+            services.AddScoped<IAutomovilRepository, AutomovilRepository>();
 
-            /* Adapters */
-            services.AddSingleton<IExternalApiClient, ExternalApiHttpAdapter>();
-
-            return services;
-        }
-
-        private static IServiceCollection AddRepositories(this IServiceCollection services, IConfiguration configuration)
-        {
-            string dbType = configuration["Configurations:UseDatabase" ?? throw new NullReferenceException(InfrastructureConstants.DATABASE_TYPE_NOT_CONFIGURED)];
-
-            services.CreateDataBase(dbType, configuration);
+            // No registramos adapters HTTP porque tu carpeta Adapters está vacía.
+            // Si más adelante agregas uno, lo registras acá.
 
             return services;
         }

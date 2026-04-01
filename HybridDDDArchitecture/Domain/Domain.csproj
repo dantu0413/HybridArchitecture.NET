@@ -7,9 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Validators\DummyEntityValidator.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="DomainServices\" />
     <Folder Include="Aggregators\" />
     <Folder Include="Contracts\" />
+    <Folder Include="Validators\" />
     <Folder Include="ValueObjects\" />
   </ItemGroup>
 

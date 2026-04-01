@@ -7,6 +7,24 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="UseCases\DummyEntity\**" />
+	  <EmbeddedResource Remove="UseCases\DummyEntity\**" />
+	  <None Remove="UseCases\DummyEntity\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="ApplicationServices\DummyEntityApplicationService.cs" />
+	  <Compile Remove="ApplicationServices\IDummyEntityApplicationService.cs" />
+	  <Compile Remove="DomainEvents\DummyEntityCreated.cs" />
+	  <Compile Remove="DomainEvents\DummyEntityDeleted.cs" />
+	  <Compile Remove="DomainEvents\DummyEntityUpdated.cs" />
+	  <Compile Remove="Integrations\Events\DummyEntityCreatedIntegrationEvent.cs" />
+	  <Compile Remove="Integrations\Events\DummyExternalIntegrationEvent.cs" />
+	  <Compile Remove="Integrations\Handlers\Publishers\DummyEntityCreatedIntegrationEventHandlerPub.cs" />
+	  <Compile Remove="Integrations\Handlers\Subscribers\DummyEntityCreatedIntegrationEventHandlerSub.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\Core.Application.Adapters\Core.Application.Adapters.Http.csproj" />
 		<ProjectReference Include="..\Core.Application.ComandQueryBus\Core.Application.ComandQueryBus.csproj" />
 		<ProjectReference Include="..\Core.Application.EventBus\Core.Application.EventBus.csproj" />
@@ -17,6 +35,11 @@
 
 	<ItemGroup>
 		<Folder Include="Adapters\" />
+		<Folder Include="ApplicationServices\" />
+		<Folder Include="DomainEvents\" />
+		<Folder Include="Integrations\Events\" />
+		<Folder Include="Integrations\Handlers\Publishers\" />
+		<Folder Include="Integrations\Handlers\Subscribers\" />
 	</ItemGroup>
 
 	<ItemGroup>
